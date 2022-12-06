@@ -62,5 +62,6 @@ ignore: null
 deploy:
   type: git
   repo: git@github.com:ChrisVicky/chrisvicky.github.io.git
+  branch: gh-pages
 
 theme: icarus
