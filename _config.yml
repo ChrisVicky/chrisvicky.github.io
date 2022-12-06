@@ -61,4 +61,6 @@ exclude: null
 ignore: null
 deploy:
   type: git
+  repo: https://github.com/ChrisVicky/chrisvicky.github.io
+
 theme: icarus
