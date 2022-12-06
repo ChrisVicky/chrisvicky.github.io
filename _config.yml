@@ -28,7 +28,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
@@ -65,3 +65,28 @@ deploy:
   branch: gh-pages
 
 theme: icarus
+
+marked:
+  gfm: true
+  pedantic: false
+  breaks: true
+  smartLists: true
+  smartypants: true
+  quotes: '“”‘’'
+  modifyAnchors: 0
+  anchorAlias: false
+  autolink: true
+  mangle: true
+  sanitizeUrl: false
+  dompurify: false
+  headerIds: true
+  lazyload: false
+  prependRoot: true
+  postAsset: true 
+  external_link:
+    enable: false
+    exclude: []
+    nofollow: false
+  disableNunjucks: false
+  descriptionLists: true
+root: /

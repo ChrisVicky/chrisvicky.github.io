@@ -4,9 +4,9 @@ logo: /img/logo.svg
 head:
     favicon: /img/favicon.svg
     manifest:
-        name: 
-        short_name: 
-        start_url: 
+        name:  Christopher Blog
+        short_name: Chrisckey
+        start_url: https://chrisvicky.github.io/
         theme_color: 
         background_color: 
         display: standalone
@@ -48,9 +48,9 @@ navbar:
         Tags: /tags
         About: /about
     links:
-        Download on GitHub:
+        GitHub:
             icon: fab fa-github
-            url: https://github.com/ppoffice/hexo-theme-icarus
+            url: https://github.com/chrisvicky
 footer:
     links:
         Creative Commons:
@@ -59,16 +59,16 @@ footer:
         Attribution 4.0 International:
             icon: fab fa-creative-commons-by
             url: https://creativecommons.org/licenses/by/4.0/
-        Download on GitHub:
+        GitHub:
             icon: fab fa-github
-            url: https://github.com/ppoffice/hexo-theme-icarus
+            url: https://github.com/chrisvicky
 article:
     highlight:
-        theme: atom-one-light
+        theme: dracula
         clipboard: true
         fold: unfolded
     readtime: true
-    update_time: true
+    update_time: false
     licenses:
         Creative Commons:
             icon: fab fa-creative-commons
@@ -82,52 +82,52 @@ article:
 search:
     type: insight
     index_pages: true
-comment:
-    type: disqus
-    shortname: ''
-donates:
-    -
-        type: afdian
-        url: ''
-    -
-        type: alipay
-        qrcode: ''
-    -
-        type: buymeacoffee
-        url: ''
-    -
-        type: patreon
-        url: ''
-    -
-        type: paypal
-        business: ''
-        currency_code: USD
-    -
-        type: wechat
-        qrcode: ''
-share:
-    type: sharethis
-    install_url: ''
+# comment:
+#     type: disqus
+#     shortname: ''
+# donates:
+#     -
+#         type: afdian
+#         url: ''
+#     -
+#         type: alipay
+#         qrcode: ''
+#     -
+#         type: buymeacoffee
+#         url: ''
+#     -
+#         type: patreon
+#         url: ''
+#     # -
+#     #     type: paypal
+#     #     business: ''
+#     #     currency_code: USD
+#     -
+#         type: wechat
+#         qrcode: ''
+# share:
+#     type: sharethis
+#     install_url: ''
 sidebar:
     left:
-        sticky: false
+        sticky: true
     right:
-        sticky: false
+        sticky: true
 widgets:
     -
         position: left
         type: profile
-        author: Your name
-        author_title: Your title
-        location: Your location
-        avatar: 
-        avatar_rounded: false
+        author: Christopher Liu
+        author_title: College Student
+        location: Chengdu, Sichuan, China
+        avatar:  /myimg/yukinoshita_1.png
+        avatar_rounded: true 
         gravatar: 
-        follow_link: https://github.com/ppoffice
+        follow_link: https://github.com/chrisvicky
         social_links:
             Github:
                 icon: fab fa-github
-                url: https://github.com/ppoffice
+                url: https://github.com/chrisvicky
             Facebook:
                 icon: fab fa-facebook
                 url: https://facebook.com
@@ -144,45 +144,45 @@ widgets:
         position: left
         type: toc
         index: true
-        collapsed: true
-        depth: 3
+        # collapsed: true
+        # depth: 3
     -
-        position: left
-        type: links
-        links:
-            Hexo: https://hexo.io
-            Bulma: https://bulma.io
-    -
-        position: left
+        position: right
         type: categories
     -
-        position: left
+        position: right
         type: recent_posts
     -
-        position: left
-        type: archives
-    -
-        position: left
+        position: right
         type: tags
         order_by: name
         amount: 
         show_count: true
     -
-        position: left
-        type: subscribe_email
-        description: 
-        feedburner_id: ''
-    -
-        position: left
-        type: adsense
-        client_id: ''
-        slot_id: ''
-    -
-        position: left
-        type: followit
-        description: 
-        action_url: ''
-        verification_code: ''
+        position: right 
+        type: archives
+          # -
+          #     position: right
+          #     type: links
+          #     links:
+          #         Hexo: https://hexo.io
+          #         Bulma: https://bulma.io
+    # -
+    #     position: left
+    #     type: subscribe_email
+    #     description: 
+    #     feedburner_id: ''
+    # -
+    #     position: left
+    #     type: adsense
+    #     client_id: ''
+    #     slot_id: ''
+    # -
+    #     position: left
+    #     type: followit
+    #     description: 
+    #     action_url: ''
+    #     verification_code: ''
 plugins:
     animejs: true
     back_to_top: true
