@@ -20,7 +20,7 @@ cover: /myimg/Clash.png
 
 <center>
   <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
-    src="img/image_2022-12-09-20-23-23.png"><br>
+    src="/img/image_2022-12-09-20-23-23.png"><br>
   <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Example</div>
 </center>
 
@@ -43,7 +43,7 @@ WantedBy=multi-user.target
 
 <center>
   <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
-    src="img/image_2022-12-09-20-38-10.png"><br>
+    src="/img/image_2022-12-09-20-38-10.png"><br>
   <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Systemd Management</div>
 </center>
 

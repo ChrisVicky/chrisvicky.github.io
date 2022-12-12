@@ -3,7 +3,7 @@ title: Source Backup for Disk Update
 toc: true
 categories:
 - Post
-tags:
+tags: 
 - Linux
 - 记录
 ---
@@ -41,6 +41,7 @@ tags:
 
 1. 文件备份
     * 根据上述分类进行备份
+    * 2022-12-12 23:38 DONE
 
 2. 确定安装和磁盘分区
     * 安装 512 GB 的 Windows 11 系统 和 512 GB 的 Linux 系统 
@@ -48,24 +49,25 @@ tags:
 
 3. 购置固态硬盘
     * 选取三星 "980 Pro PCIe 4.0 NVMe M.2"
+    * 2022-12-12 23:38 次日到貨 
 
 4. 对需要安装的系统和软件、配置写教程
 
-| 待安装（配置）的内容 | 是否完成教程撰写 | 备注                             |
-|----------------------|------------------|----------------------------------|
-| Arch Linux           |                  |                                  |
-| dwm                  |                  | 拷贝文件即可, 应当包括 autostart |
-| dmenu                |                  | 同上                             |
-| vim / nvim           |                  | 同上                             |
-| 中文输入法           |                  |                                  |
-| yay                  |                  |                                  |
-| clash                | OK               |                                  |
-| navicat              |                  | 有破解文件                       |
-| apifox               |                  |                                  |
-| vivado               |                  | 需要备份一下 PKGBUILD 文件       |
-| libfreenect2         | !!               | 十分重要                         |
-| opencv               |                  | yay 将就用一下先                 |
-| virtualbox           | OK               | 
+| 待安装（配置）的内容 | 教程                                                                               | 备注                             |
+|----------------------|------------------------------------------------------------------------------------|----------------------------------|
+| Arch Linux           | [viseator的博客](https://www.viseator.com/2017/05/17/arch_install/)                |                                  |
+| dwm                  |                                                                                    | 拷贝文件即可, 应当包括 autostart |
+| dmenu                |                                                                                    | 同上                             |
+| vim / nvim           |                                                                                    | 同上                             |
+| 中文输入法           | [中文輸入法等安裝](https://www.viseator.com/2017/07/02/arch_more/)                 |                                  |
+| yay                  | [yay git repo](https://aur.archlinux.org/yay.git)                                  |                                  |
+| clash                | [我的博客](https://chrisvicky.github.io/2022/12/09/Setup-Systemd-for-clash-Proxy/) |                                  |
+| navicat              |                                                                                    | 有破解文件                       |
+| apifox               |                                                                                    |                                  |
+| vivado               |                                                                                    | 需要备份一下 PKGBUILD 文件       |
+| libfreenect2         | !!                                                                                 | 十分重要                         |
+| opencv               |                                                                                    | yay 将就用一下先                 |
+| virtualbox           | OK                                                                                 |
 
 ---
 
