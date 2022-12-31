@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Deploy Hadoop with VirtualBox - Christopher Liu&#039;s Personal Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Christopher Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Christopher Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="This post is a reminder of hadoop deployment on Arch Linux and virtualbox (with vagrant) Related Github Repo contains resource:"><meta property="og:type" content="blog"><meta property="og:title" content="Deploy Hadoop with VirtualBox"><meta property="og:url" content="http://example.com/2022/11/15/deploy-hadoop/"><meta property="og:site_name" content="Christopher Liu&#039;s Personal Blog"><meta property="og:description" content="This post is a reminder of hadoop deployment on Arch Linux and virtualbox (with vagrant) Related Github Repo contains resource:"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/myimg/Hadoop.png"><meta property="article:published_time" content="2022-11-14T16:00:00.000Z"><meta property="article:modified_time" content="2022-12-31T03:33:59.985Z"><meta property="article:author" content="Christopher Liu"><meta property="article:tag" content="Hadoop"><meta property="article:tag" content="Big Data"><meta property="article:tag" content="課程作業"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/myimg/Hadoop.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/11/15/deploy-hadoop/"},"headline":"Deploy Hadoop with VirtualBox","image":["http://example.com/myimg/Hadoop.png"],"datePublished":"2022-11-14T16:00:00.000Z","dateModified":"2022-12-31T03:33:59.985Z","author":{"@type":"Person","name":"Christopher Liu"},"publisher":{"@type":"Organization","name":"Christopher Liu's Personal Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"This post is a reminder of hadoop deployment on Arch Linux and virtualbox (with vagrant) Related Github Repo contains resource:"}</script><link rel="canonical" href="http://example.com/2022/11/15/deploy-hadoop/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/dracula.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Christopher Liu&#039;s Personal Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2022/11/12/aboutme">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/chrisvicky"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/myimg/Hadoop.png" alt="Deploy Hadoop with VirtualBox"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-11-14T16:00:00.000Z" title="11/15/2022, 12:00:00 AM">2022-11-15</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/Post/">Post</a></span><span class="level-item">4 分钟读完 (大约670个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Deploy Hadoop with VirtualBox</h1><div class="content"><ul>
+<li>This post is a reminder of hadoop deployment on Arch Linux and virtualbox (with vagrant)</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ChrisVicky/hadoop-vm">Related Github Repo contains resource:</a></li>
+</ul>
+<span id="more"></span>
+
+<center>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-16-00-30-34.png"><br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">system information</div>
+</center>
+
+
+
+<hr>
+<h2 id="Pre-Requirement"><a href="#Pre-Requirement" class="headerlink" title="Pre-Requirement"></a>Pre-Requirement</h2><ol>
+<li>VirtualBox</li>
+<li>vagrant</li>
+</ol>
+<center>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-15-23-47-12.png"><br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">virtualbox and vagrant</div>
+</center>
+
+<ol start="3">
+<li>Access to Internet<ul>
+<li>The base OS we choose to deploy Hadoop Cluster is Ubuntu 16, thus we should be able to fetch “ubuntu&#x2F;xenial64” from <a target="_blank" rel="noopener" href="https://app.vagrantup.com/boxes/search">vagrant cloud</a>.</li>
+<li>Also, the first step in your vm is to update and install necessary applications such as <code>ssh</code>, <code>rsync</code> and <code>vim</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="1-Ingredients-checkup"><a href="#1-Ingredients-checkup" class="headerlink" title="1. Ingredients checkup"></a>1. Ingredients checkup</h3><ul>
+<li>Make sure the Directory has the following structure</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── cache                               -- Files to replace in VM</span><br><span class="line">│   ├── core-site.xml                   -- replace /usr/local/hadoop/etc/hadoop/core-site.xml in VM</span><br><span class="line">│   ├── hadoop-2.9.0.tar.gz             -- hadoop </span><br><span class="line">│   ├── hdfs-site.xml                   -- replace /usr/local/hadoop/etc/hadoop/hdfs-site.xml in VM </span><br><span class="line">│   ├── hosts                           -- replace /usr/hosts in VM</span><br><span class="line">│   ├── jdk-8u161-linux-x64.tar.gz      -- jdk package</span><br><span class="line">│   ├── mapred-site.xml                 -- replace /usr/local/hadoop/etc/hadoop/mapred-site.xml</span><br><span class="line">│   ├── scala-2.11.8.tgz                -- scala package</span><br><span class="line">│   ├── sources.list                    -- replace /etc/apt/sources.list -&gt; from https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/</span><br><span class="line">│   ├── spark-2.3.0-bin-hadoop2.7.tgz   -- spark package</span><br><span class="line">│   └── yarn-site.xml                   -- replace /usr/local/hadoop/etc/hadoop/yarn-site.xml</span><br><span class="line">├── hadoop+spark集群平台搭建.pptx       -- ppt instruction for Hadoop + spark on VMware</span><br><span class="line">├── Hadoop集群安装手册.pdf              -- PDF instruction for Hadoop on VMware based on CentOS</span><br><span class="line">├── hadoop集群搭建.pptx                 -- ppt instruction for Hadoop on VMware based on Ubuntu -- Instruction for this Virtualbox Version</span><br><span class="line">├── img                                 -- IMGs in this readme file</span><br><span class="line">├── init.sh                             -- Scripts to execute when VM first starts</span><br><span class="line">├── README.md                           -- This file</span><br><span class="line">└── Vagrantfile                         -- VM Configurations</span><br><span class="line"></span><br><span class="line">2 directories, 26 files</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Check-init-sh-and-Vagrantfile-for-certain-configurations"><a href="#2-Check-init-sh-and-Vagrantfile-for-certain-configurations" class="headerlink" title="2. Check init.sh and Vagrantfile for certain configurations"></a>2. Check init.sh and Vagrantfile for certain configurations</h3><ol>
+<li>The default configuration for Virtual Machines is written in <code>Vagrantfile</code>. Modifications can be made by changing the code directly.</li>
+<li>Check up init.sh for more setups.</li>
+</ol>
+<h3 id="3-Execute-Vagrant-Up"><a href="#3-Execute-Vagrant-Up" class="headerlink" title="3. Execute Vagrant Up"></a>3. Execute Vagrant Up</h3><ul>
+<li><p>In the directory shown above, execute <code>vagrant up</code> to setup and boot your vm.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up </span><br></pre></td></tr></table></figure>
+<center>
+  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+      src="/img/image_2022-11-15-22-04-25.png"><br>
+  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Commands to Execute</div>
+</center>
+</li>
+<li><p>It should take a while. So have a cup of tea and when everything is settled, check your virutal machine with either <code>vagrant status</code> or <code>virtualbox user interface</code></p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant status</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-15-22-07-10.png"><br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">vagrant status</div>
+</center>
+<center>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-15-22-08-01.png"><br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">virtualbox user interface</div>
+</center>
+
+<h3 id="4-ssh-configurations"><a href="#4-ssh-configurations" class="headerlink" title="4. ssh configurations"></a>4. ssh configurations</h3><ol>
+<li><p>use <code>vagrant ssh master</code> to enter master virtual machine.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh master</span><br></pre></td></tr></table></figure>
+<center>
+ <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+     src="/img/image_2022-11-15-22-11-20.png"><br>
+ <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">vagrant ssh master</div>
+</center>
+</li>
+<li><p>Append public keys to authorized_keys by <code>cat /vagrant/cache/authorized_keys &gt;&gt; ~/.ssh/authorized_keys</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /vagrant/cache/authorized_keys &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note that all three public keys have been generated and pasted in <code>/vagrant/cache/authorized_keys</code> by commands in <code>init.sh</code> and <code>Vagrantfile</code>.</p>
+</blockquote>
+</li>
+<li><p>Ssh configuration should be done in both slaves as well.</p>
+</li>
+<li><p>Varify ssh configuration by executing <code>ssh slave1</code> in <code>master</code> virtual machine. You sohuld log into slave1 without entering password.</p>
+<center>
+ <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+     src="/img/image_2022-11-15-22-22-03.png"><br>
+ <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">log into slave1 without password after ssh configuration</div>
+</center></li>
+</ol>
+<h2 id="Deploy-and-Varify-Hadoop"><a href="#Deploy-and-Varify-Hadoop" class="headerlink" title="Deploy and Varify Hadoop"></a>Deploy and Varify Hadoop</h2><h3 id="1-Deploy-Hadoop"><a href="#1-Deploy-Hadoop" class="headerlink" title="1. Deploy Hadoop"></a>1. Deploy Hadoop</h3><ul>
+<li><p>run <code>hadoop namenode -format</code> in <code>master</code> virtual machine to configure node information.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop namenode -format</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run <code>start-all.sh</code> to start deployment. Always remember to run <code>stop-all.sh</code> before virtual machine shutdown.</p>
+</li>
+</ul>
+<h3 id="2-Varification"><a href="#2-Varification" class="headerlink" title="2. Varification"></a>2. Varification</h3><ul>
+<li>run <code>hadoop jar hadoop-mapreduce-examples-2.9.0.jar pi 5 5</code> in directory <code>/usr/local/hadoop/share/hadoop/mapreduce</code> to varify.<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/hadoop/share/hadoop/mapreduce</span><br><span class="line">hadoop jar hadoop-mapreduce-examples-2.9.0.jar pi 5 5</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A number relatively close to pi is then presented. To be more accurate on the result, try running <code>pi 10 10000</code> which takes a longer period.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-User-Interface"><a href="#3-User-Interface" class="headerlink" title="3. User Interface"></a>3. User Interface</h3><ul>
+<li>Hadoop Environment Configuration on <code>IP:50070</code> where IP is the static IP for Master. And on <code>IP:8088</code> where IP is the static IP of Master and <code>8088</code> can be configured in those <code>.xml</code> files.</li>
+</ul>
+<center>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-15-22-33-19.png"><br><br>
+    <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+        src="/img/image_2022-11-15-22-33-51.png"><br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">UI</div>
+</center>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Deploy Hadoop with VirtualBox</p><p><a href="http://example.com/2022/11/15/deploy-hadoop/">http://example.com/2022/11/15/deploy-hadoop/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Christopher Liu</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-11-15</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-12-31</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Hadoop/">Hadoop</a><a class="link-muted mr-2" rel="tag" href="/tags/Big-Data/">Big Data</a><a class="link-muted mr-2" rel="tag" href="/tags/%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD/">課程作業</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/11/18/Add-Extra-Memory-to-Thinkpad-T14/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Add Extra Memory to Thinkpad T14</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/11/12/aboutme/"><span class="level-item">About Me</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/myimg/yukinoshita_1.png" alt="Christopher Liu"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Christopher Liu</p><p class="is-size-6 is-block">College Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, Sichuan, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">15</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/chrisvicky" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/chrisvicky"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Pre-Requirement"><span class="level-left"><span class="level-item">1</span><span class="level-item">Pre-Requirement</span></span></a></li><li><a class="level is-mobile" href="#Installation"><span class="level-left"><span class="level-item">2</span><span class="level-item">Installation</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-Ingredients-checkup"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">1. Ingredients checkup</span></span></a></li><li><a class="level is-mobile" href="#2-Check-init-sh-and-Vagrantfile-for-certain-configurations"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">2. Check init.sh and Vagrantfile for certain configurations</span></span></a></li><li><a class="level is-mobile" href="#3-Execute-Vagrant-Up"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">3. Execute Vagrant Up</span></span></a></li><li><a class="level is-mobile" href="#4-ssh-configurations"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">4. ssh configurations</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Deploy-and-Varify-Hadoop"><span class="level-left"><span class="level-item">3</span><span class="level-item">Deploy and Varify Hadoop</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-Deploy-Hadoop"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">1. Deploy Hadoop</span></span></a></li><li><a class="level is-mobile" href="#2-Varification"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">2. Varification</span></span></a></li><li><a class="level is-mobile" href="#3-User-Interface"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">3. User Interface</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Diary/"><span class="level-start"><span class="level-item">Diary</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Post/"><span class="level-start"><span class="level-item">Post</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-29T16:00:00.000Z">2022-12-30</time></p><p class="title"><a href="/2022/12/30/KinectV2-Camera-Calibration-and-YoloV5-Recognition/">KinectV2 Camera Calibration and `Yolov5` Recognition</a></p><p class="categories"><a href="/categories/Post/">Post</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-11T16:00:00.000Z">2022-12-12</time></p><p class="title"><a href="/2022/12/12/Source-Backup-for-Disk-Update/">Source Backup for Disk Update</a></p><p class="categories"><a href="/categories/Post/">Post</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-09T12:23:09.000Z">2022-12-09</time></p><p class="title"><a href="/2022/12/09/Setup-Systemd-for-clash-Proxy/">Setup Systemd for clash Proxy</a></p><p class="categories"><a href="/categories/Post/">Post</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-01T00:05:28.000Z">2022-12-01</time></p><p class="title"><a href="/2022/12/01/ssh/">SSH Penetration Setup Memo</a></p><p class="categories"><a href="/categories/Post/">Post</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-11-17T16:00:00.000Z">2022-11-18</time></p><p class="title"><a href="/2022/11/18/Add-Extra-Memory-to-Thinkpad-T14/">Add Extra Memory to Thinkpad T14</a></p><p class="categories"><a href="/categories/Post/">Post</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Big-Data/"><span class="tag">Big Data</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Clash/"><span class="tag">Clash</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DIY/"><span class="tag">DIY</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hadoop/"><span class="tag">Hadoop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hardware/"><span class="tag">Hardware</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/KinectV2/"><span class="tag">KinectV2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Opencv/"><span class="tag">Opencv</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Performance-Improve/"><span class="tag">Performance Improve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Systemd/"><span class="tag">Systemd</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/VPN/"><span class="tag">VPN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/learn/"><span class="tag">learn</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssh/"><span class="tag">ssh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD/"><span class="tag">課程作業</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%B0%E5%BD%95/"><span class="tag">记录</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/11/"><span class="level-start"><span class="level-item">十一月 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Christopher Liu&#039;s Personal Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Christopher Liu</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/chrisvicky"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
