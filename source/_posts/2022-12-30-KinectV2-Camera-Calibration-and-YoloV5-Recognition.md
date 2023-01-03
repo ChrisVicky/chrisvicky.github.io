@@ -8,20 +8,21 @@ tags:
 - KinectV2
 - Opencv
 - 记录
+excerpt: 主要描述了使用 KinectV2 以及 `Yolov5` 進行相機位置標定和目標檢測+位置標定的集成項目完成過程
 cover: /myimg/KinectV2-Camera-Calibration-and-Yolov5-Recognition.png
 ---
 
 * Project Repo: [KinectV2 Camera Calibration and `Yolov5` Recognition](https://github.com/ChrisVicky/KinectV2-calibration-and-Yolov5-recognition)
-* 2022-12-30 19:11
 * This is a subproject from [camera-position-solution](https://github.com/ChrisVicky/camera-position-solution).
 
 ## Background
 
 We are assigned the mission to combine KinectV2 Camera and a Robot car to construct a system that automatically calculate the camera's position and can tell where some objects are only according to camera's perspective (Of course here we use Yolov5 to recognize objects);
 
+<!-- more -->
+
 In this part, we use the chess board instead of the robot car to accomplish the calibration part and then calculate a perspective transformation matrix that maps points in the image (aka pixel coordinates) to the desk (or bed) coordinates.
 
-<!-- more -->
 
 ![KinectV2](img/image_2022-12-30-19-10-06.jpg)
 

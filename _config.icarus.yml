@@ -111,9 +111,9 @@ search:
 #     install_url: ''
 sidebar:
     left:
-        sticky: true
+        sticky: false
     right:
-        sticky: true
+        sticky: false
 widgets:
     -
         position: right 
