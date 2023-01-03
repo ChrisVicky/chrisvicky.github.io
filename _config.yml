@@ -1,11 +1,11 @@
-title: Christopher Liu's Personal Blog
+title: Christopher Liu's 小窩
 subtitle: Stay Hungery, Stay Foolish
 description: ''
 keywords: Architecture, Web3, Life, AI
 author: Christopher Liu
-language: zh-CN
+language: en
 timezone: Asia/Shanghai
-url: http://example.com
+url: https://chrisvicky.github.io/
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
@@ -64,7 +64,7 @@ deploy:
   repo: git@github.com:ChrisVicky/chrisvicky.github.io.git
   branch: gh-pages
 
-theme: icarus
+theme: butterfly
 
 marked:
   gfm: true
@@ -90,3 +90,4 @@ marked:
   disableNunjucks: false
   descriptionLists: true
 root: /
+

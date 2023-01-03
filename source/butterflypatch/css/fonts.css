@@ -1,0 +1,18 @@
+
+@font-face {
+  font-family: SmileySans;
+  src: url('/butterflypatch/fonts/SmileySans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: UbuntuNerd;
+  src: url('/butterflypatch/fonts/Ubuntu Light Nerd Font Complete.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: WenKai;
+  src: url('/butterflypatch/fonts/LXGWWenKaiMono-Regular.ttf') format('truetype');
+}
+body {
+  font-family: WenKai;
+}

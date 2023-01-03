@@ -19,6 +19,12 @@ cover: /myimg/KinectV2-Camera-Calibration-and-Yolov5-Recognition.png
 
 We are assigned the mission to combine KinectV2 Camera and a Robot car to construct a system that automatically calculate the camera's position and can tell where some objects are only according to camera's perspective (Of course here we use Yolov5 to recognize objects);
 
+<center>
+  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+    src="/img/image_2023-01-04-00-07-18.png"><br>
+  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">KinectV2</div>
+</center>
+
 In this part, we use the chess board instead of the robot car to accomplish the calibration part and then calculate a perspective transformation matrix that maps points in the image (aka pixel coordinates) to the desk (or bed) coordinates.
 
 <!-- more -->
