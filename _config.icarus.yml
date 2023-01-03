@@ -116,7 +116,7 @@ sidebar:
         sticky: true
 widgets:
     -
-        position: left
+        position: right 
         type: profile
         author: Christopher Liu
         author_title: College Student
@@ -142,7 +142,7 @@ widgets:
                 icon: fas fa-rss
                 url: /
     -
-        position: left
+        position: right 
         type: toc
         index: true
         # collapsed: true
