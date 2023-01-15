@@ -419,9 +419,9 @@ Point3f ret = Point3f(out[0].x,out[0].y,0);
 
 ## Summary
 
-Till now, the Project is half-way finished and seems pretty simple, only takes advantage of existing Methods, APIs and Models. In the next semester, we would combine the robot car to accomplish the original plan. 
+Till now, the Project is half-way finished and seems pretty simple, only taking advantage of existing Methods, APIs and Models. In the next semester, we would combine the robot car to accomplish the original plan. 
 
-The next aim of our project would be human-skeleton detection and action deduction with it. And finally, takes some WiFi-Sensor Information would enable us to build a more robust and more complete in-home monitor system.
+The next aim of our project would be human-skeleton detection and action deduction with it. And finally, adding some WiFi-Sensor Information would enable us to build a more robust and more complete in-home monitor system.
 
 
 
