@@ -24,40 +24,35 @@ cover: /myimg/ViTModel.png
 ## Brief summary
 ![image_2023-01-15-22-17-58](img/image_2023-01-15-22-17-58.png)
 
-### What is the problem the paper is trying to solve?
+* What is the problem the paper is trying to solve?
+  * How can we reduce CNNs in transformer models in image classification tasks?
+  * How to treat an Image as a sequence of data?
 
-* How can we reduce CNNs in transformer models in image classification tasks?
-* How to treat an Image as a sequence of data?
-
-### What are the key ideas of the paper? Key insights?
-
-* A new way to treat an image sequencially.
-* An image is divided into 16x16 2D patches and are transfered sequencially into an out-of-box self-attention transformer encoder, followed by MLP Heads which result in classification predictions.
+* What are the key ideas of the paper? Key insights?
+  * A new way to treat an image sequencially.
+  * An image is divided into 16x16 2D patches and are transfered sequencially into an out-of-box self-attention transformer encoder, followed by MLP Heads which result in classification predictions.
 
 
-### What is the key contribution to the literature at the time it was written?
+* What is the key contribution to the literature at the time it was written?
+  * First to reduce entirely the CNNs in usage of transformer in image classification tasks and propose a pure transformer model called Vision Transformer (ViT).
+  * Maybe the first to propose a sequencial treatment on an image.
 
-* First to reduce entirely the CNNs in usage of transformer in image classification tasks and propose a pure transformer model called Vision Transformer (ViT).
-
-* Maybe the first to propose a sequencial treatment on an image.
-
-### What are the most important things you take out from it?
-
-* A possible way to treat an image as a sequence of data while preserving some relative information.
-* Designing easy-to-use models that utilize out-of-box interfaces could be a good way of conducting creative methods that solve difficult problems.
+* What are the most important things you take out from it?
+  * A possible way to treat an image as a sequence of data while preserving some relative information.
+  * Designing easy-to-use models that utilize out-of-box interfaces could be a good way of conducting creative methods that solve difficult problems.
  
 ## Strengths (Most Important Ones)
-### Does the paper solve the problem well?
 
-1. First of all, it is true that the solution, or more precisely, the new model proposed can be a possible solution that treat an image in a sequencial way.
-2. Second, the computational latency can be low in this case since the division is as small as 16x16, and therefore the computational complexity can be relatively at a low level.
+* Does the paper solve the problem well?
+  1. First of all, it is true that the solution, or more precisely, the new model proposed can be a possible solution that treat an image in a sequencial way.
+  2. Second, the computational latency can be low in this case since the division is as small as 16x16, and therefore the computational complexity can be relatively at a low level.
 
 ## Weaknesses (Most Important Ones)
 
-### Room for improvement.
-1. The way to treat the image as a sequence of data is too straight-forward. The information on the boaders between patches can be lost.
-2. The patches are produced with a fixed number of sequences, making the model difficult to perform on images with hight resolution, and since nowadays people have a preference of taking high resolution pictures, the methods proposed may not be practical in reallife without further improvements.
-3. Also, the model requires a large quantity of data for training, significally improving the training costs.
+* Room for improvement.
+  1. The way to treat the image as a sequence of data is too straight-forward. The information on the boaders between patches can be lost.
+  2. The patches are produced with a fixed number of sequences, making the model difficult to perform on images with hight resolution, and since nowadays people have a preference of taking high resolution pictures, the methods proposed may not be practical in reallife without further improvements.
+  3. Also, the model requires a large quantity of data for training, significally improving the training costs.
 
 ## How can we do better? Your ideas and thoughts.
 1. To include more relative information between patches, I guess one way is to introduce an additional division that stands on the boarder of the original one. A possible implementation is shown below.
