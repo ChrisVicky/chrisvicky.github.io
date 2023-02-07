@@ -990,7 +990,7 @@ binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
 
-bluebird@^3.2.2, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5, bluebird@^3.7.2:
+bluebird@^3.2.2, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
 
@@ -1060,7 +1060,7 @@ chalk@^4.0.0, chalk@^4.0.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chokidar@^3.0.0:
+chokidar@^3.0.0, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   dependencies:
@@ -1451,7 +1451,7 @@ globals@^11.1.0:
   version "11.12.0"
   resolved "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.3:
+graceful-fs@^4.1.11, graceful-fs@^4.1.3, graceful-fs@^4.2.10:
   version "4.2.10"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
 
@@ -1498,16 +1498,16 @@ hexo-component-inferno@^2.0.2:
     moment "^2.24.0"
     semver "^7.1.1"
 
-hexo-deployer-git@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/hexo-deployer-git/-/hexo-deployer-git-3.0.0.tgz"
+hexo-deployer-git@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/hexo-deployer-git/-/hexo-deployer-git-4.0.0.tgz#d507ecd5ba7d07f60b0c1ab50ced3e47535f6017"
   dependencies:
-    bluebird "^3.5.0"
-    chalk "^4.0.0"
-    hexo-fs "^3.0.1"
-    hexo-util "^2.1.0"
-    moment "^2.18.0"
-    nunjucks "^3.2.1"
+    bluebird "^3.7.2"
+    hexo-fs "^4.0.0"
+    hexo-util "^2.7.0"
+    luxon "^3.0.4"
+    nunjucks "^3.2.3"
+    picocolors "^1.0.0"
 
 hexo-front-matter@^3.0.0:
   version "3.0.0"
@@ -1523,6 +1523,15 @@ hexo-fs@^3.0.1, hexo-fs@^3.1.0:
     chokidar "^3.0.0"
     graceful-fs "^4.1.11"
     hexo-util "^2.0.0"
+
+hexo-fs@^4.0.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-4.1.1.tgz#4a95d0d6b15eb7baf642ce54b8234fb32e5f032d"
+  dependencies:
+    bluebird "^3.7.2"
+    chokidar "^3.5.3"
+    graceful-fs "^4.2.10"
+    hexo-util "^2.7.0"
 
 hexo-generator-archive@^2.0.0:
   version "2.0.0"
@@ -1643,7 +1652,7 @@ hexo-theme-landscape@^0.0.3:
   version "0.0.3"
   resolved "https://registry.npmjs.org/hexo-theme-landscape/-/hexo-theme-landscape-0.0.3.tgz"
 
-hexo-util@^2.0.0, hexo-util@^2.1.0, hexo-util@^2.2.0, hexo-util@^2.4.0, hexo-util@^2.7.0:
+hexo-util@^2.0.0, hexo-util@^2.2.0, hexo-util@^2.4.0, hexo-util@^2.7.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/hexo-util/-/hexo-util-2.7.0.tgz"
   dependencies:
@@ -1942,6 +1951,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+luxon@^3.0.4:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.2.1.tgz#14f1af209188ad61212578ea7e3d518d18cee45f"
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/make-dir/-/make-dir-2.1.0.tgz"
@@ -2015,7 +2028,7 @@ moment-timezone@^0.5.34:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.18.0, moment@^2.22.2, moment@^2.24.0, moment@^2.29.1:
+"moment@>= 2.9.0", moment@^2.22.2, moment@^2.24.0, moment@^2.29.1:
   version "2.29.4"
   resolved "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
 
@@ -2064,7 +2077,7 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
 
-nunjucks@^3.2.1, nunjucks@^3.2.3:
+nunjucks@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npmjs.org/nunjucks/-/nunjucks-3.2.3.tgz"
   dependencies:
