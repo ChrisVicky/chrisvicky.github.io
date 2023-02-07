@@ -17,8 +17,8 @@ cover: /myimg/ViTModel.png
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Title</div>
 </center>
 
-* cite: Dosovitskiy, Alexey, et al. "An image is worth 16x16 words: Transformers for image recognition at scale." arXiv preprint arXiv:2010.11929 (2020).
-* available online: https://arxiv.org/pdf/2010.11929.pdf
+* Cite: Dosovitskiy, Alexey, et al. "An image is worth 16x16 words: Transformers for image recognition at scale." arXiv preprint arXiv:2010.11929 (2020).
+* Available online: https://arxiv.org/pdf/2010.11929.pdf
 * Date: 2023-01-15 22:07
 
 ## Brief summary
@@ -29,13 +29,13 @@ cover: /myimg/ViTModel.png
   * How to treat an Image as a sequence of data?
 
 * What are the key ideas of the paper? Key insights?
-  * A new way to treat an image sequencially.
-  * An image is divided into 16x16 2D patches and are transfered sequencially into an out-of-box self-attention transformer encoder, followed by MLP Heads which result in classification predictions.
+  * A new way to treat an image sequentially.
+  * An image is divided into 16x16 2D patches and are transferred sequentially into an out-of-box self-attention transformer encoder, followed by MLP Heads which result in classification predictions.
 
 
 * What is the key contribution to the literature at the time it was written?
   * First to reduce entirely the CNNs in usage of transformer in image classification tasks and propose a pure transformer model called Vision Transformer (ViT).
-  * Maybe the first to propose a sequencial treatment on an image.
+  * Maybe the first to propose a sequential treatment on an image.
 
 * What are the most important things you take out from it?
   * A possible way to treat an image as a sequence of data while preserving some relative information.
@@ -44,15 +44,15 @@ cover: /myimg/ViTModel.png
 ## Strengths (Most Important Ones)
 
 * Does the paper solve the problem well?
-  1. First of all, it is true that the solution, or more precisely, the new model proposed can be a possible solution that treat an image in a sequencial way.
+  1. First, it is true that the solution, or more precisely, the new model proposed can be a possible solution that treat an image sequentially.
   2. Second, the computational latency can be low in this case since the division is as small as 16x16, and therefore the computational complexity can be relatively at a low level.
 
 ## Weaknesses (Most Important Ones)
 
 * Room for improvement.
-  1. The way to treat the image as a sequence of data is too straight-forward. The information on the boaders between patches can be lost.
-  2. The patches are produced with a fixed number of sequences, making the model difficult to perform on images with hight resolution, and since nowadays people have a preference of taking high resolution pictures, the methods proposed may not be practical in reallife without further improvements.
-  3. Also, the model requires a large quantity of data for training, significally improving the training costs.
+  1. The way to treat the image as a sequence of data is too straight-forward. The information on the boarders between patches can be lost.
+  2. The patches are produced with a fixed number of sequences, making the model difficult to perform on images with height resolution, and since nowadays, people have a preference of taking high resolution pictures, the methods proposed may not be practical in real-life without further improvements.
+  3. Also, the model requires a large quantity of data for training, significantly improving the training costs.
 
 ## How can we do better? Your ideas and thoughts.
 1. To include more relative information between patches, I guess one way is to introduce an additional division that stands on the boarder of the original one. A possible implementation is shown below.
@@ -66,9 +66,9 @@ cover: /myimg/ViTModel.png
  └───┴───┴───┘   └─┴───────┴─┘    └─┴─┴───┴─┴─┘
        A               B                C
 ```
-> Where `A` is the method in the paper and `B` is the additional sequence to provide extra information. But again, this additional patche can further worsen the situation of high overall computational costs.
+> Where `A` is the method in the paper and `B` is the additional sequence to provide extra information. But again, this additional patch can further worsen the situation of high overall computational costs.
 
-2. The high computational costs in high resolution image processing may be decreased by parellel hardware devices.
+2. The high computational costs in high resolution image processing may be decreased by parallel hardware devices.
 
 ## What have you learnt/enjoyed/disliked in the paper? Why?
 * The most impressive thing I take away from this paper is the methodology that the model is designed to utilize the API of original Transformer model which has been implemented and optimized for efficient performance. This way of design is simple, yet creative and meaningful.
