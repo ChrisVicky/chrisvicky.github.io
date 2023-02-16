@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>Git 基本指令记录</title>
+      <link href="/2023/02/16/Git-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B/"/>
+      <url>/2023/02/16/Git-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Git-基本指令"><a href="#Git-基本指令" class="headerlink" title="Git 基本指令"></a>Git 基本指令</h1><hr><h2 id="1-将远程仓库弄到本地"><a href="#1-将远程仓库弄到本地" class="headerlink" title="1. 将远程仓库弄到本地"></a>1. 将远程仓库弄到本地</h2><h3 id="1-0-将远程仓库克隆到本地-git-clone-xxx"><a href="#1-0-将远程仓库克隆到本地-git-clone-xxx" class="headerlink" title="1.0. 将远程仓库克隆到本地 git clone xxx"></a>1.0. 将远程仓库克隆到本地 <code>git clone xxx</code></h3><blockquote><p>当本地没有该仓库时</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone xxxx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">xxxx: 仓库地址（可以是 `https://xxx.git`, 也可以是 ssh 连接 `git@githubxxx`）</span></span><br><span class="line">e.g.:  git clone git@github.com:ChrisVicky/TJU-2022-Socket-Computer-Network-Lab.git</span><br></pre></td></tr></table></figure><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"    src="/img/image_2023-02-16-22-56-41.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">example</div></center><ul><li>会在本地生成一个目录，包含这个仓库</li></ul><h3 id="1-1-将远程同步到本地仓库-git-pull"><a href="#1-1-将远程同步到本地仓库-git-pull" class="headerlink" title="1.1. 将远程同步到本地仓库 git pull"></a>1.1. 将远程同步到本地仓库 <code>git pull</code></h3><blockquote><ul><li>当本地有该仓库时</li><li>每次开始对该仓库内文件修改之前都需要进行</li></ul></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><h2 id="2-做一些修改"><a href="#2-做一些修改" class="headerlink" title="2. 做一些修改"></a>2. 做一些修改</h2><h2 id="3-查看仓库状态-git-status"><a href="#3-查看仓库状态-git-status" class="headerlink" title="3. 查看仓库状态 git status"></a>3. 查看仓库状态 <code>git status</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">❯ git status </span><br><span class="line">On branch main ==&gt; 在主分支（*分支）</span><br><span class="line">Your branch is up to date with &#x27;origin/main&#x27;. ==&gt; 与远程的 `origin/main` 分支的情况 （*远程分支）</span><br><span class="line"></span><br><span class="line">Untracked files:  ==&gt; 哪些文件没有被 跟踪 （*track）</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        something</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br><span class="line">  ==&gt; 总结当前的状况</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ git status</span><br><span class="line">On branch main</span><br><span class="line">Your branch is up to date with &#x27;origin/main&#x27;.</span><br><span class="line"></span><br><span class="line">Changes to be committed:  ==&gt; 当前有没有被“提交的” 内容 （*commit）</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   something</span><br></pre></td></tr></table></figure><blockquote><p>如何建立一个“版本”， git 是一个版本控制软件。一个版本就是一个 commit, 一个 commit 中需要 track 多个 changes, 每个 changes 和一个文件绑定</p></blockquote><pre><code>  ┌───────────┐     git add   ┌────────────┐    git commit  ┌───────────┐  │file change│──────────────►│file tracked│───────────────►│file commit│  └───────────┘               └────────────┘                └───────────┘                                                              新版本诞生</code></pre><h2 id="4-添加到仓库-git-add-lt-file-gt"><a href="#4-添加到仓库-git-add-lt-file-gt" class="headerlink" title="4. 添加到仓库 git add &lt;file&gt;"></a>4. 添加到仓库 <code>git add &lt;file&gt;</code></h2><h2 id="5-提交到仓库-git-commit"><a href="#5-提交到仓库-git-commit" class="headerlink" title="5. 提交到仓库 git commit"></a>5. 提交到仓库 <code>git commit</code></h2><ul><li>需要对提交进行描述<center><img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"  src="/img/image_2023-02-16-23-08-13.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">git commit</div></center></li></ul><h2 id="6-提交到远程分支-git-push"><a href="#6-提交到远程分支-git-push" class="headerlink" title="6. 提交到远程分支 git push"></a>6. 提交到远程分支 <code>git push</code></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Post </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TJU-快速评教</title>
       <link href="/2023/02/15/TJU-%E5%BF%AB%E9%80%9F%E8%AF%84%E6%95%99%E8%84%9A%E6%9C%AC/"/>
       <url>/2023/02/15/TJU-%E5%BF%AB%E9%80%9F%E8%AF%84%E6%95%99%E8%84%9A%E6%9C%AC/</url>
       
-        <content type="html"><![CDATA[<ul><li>本程序只是为了玩一玩 <a href="https://playwright.dev/"><code>PlayWright</code></a>，并不是为了提高评教速度。</li></ul><h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><h3 id="1-校外使用-连接-TJU-的-VPN"><a href="#1-校外使用-连接-TJU-的-VPN" class="headerlink" title="1.  校外使用 连接 TJU 的 VPN"></a>1.  <em>校外使用</em> 连接 TJU 的 VPN</h3><blockquote><p>校内登录无需此步骤</p></blockquote><ol><li><p>打开 <a href="https://www.sangfor.com.cn/"><code>easyconnect</code></a></p><blockquote><p>Arch Linux 用户可以在 <code>aur</code> 上找到。</p></blockquote></li><li><p>输入天津大学 VPN 地址 <code>https://vpn.tju.edu.cn</code>并点击按钮。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="img/image_2023-02-13-21-08-36.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">输入天津大学VPN</div></center></li><li><p>输入 VPN 帐号密码。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="img/image_2023-02-13-21-08-48.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">输入帐号密码</div></center></li><li><p>登录完成。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"   src="img/image_2023-02-13-21-09-56.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">登录完成</div></center></li></ol><h3 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2. 安装环境"></a>2. 安装环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tju</span><br><span class="line">conda activate tju</span><br><span class="line">conda install pip </span><br><span class="line">pip install -r requirement.txt</span><br><span class="line">playwright install chromium</span><br></pre></td></tr></table></figure><h3 id="3-查看并填写配置文件"><a href="#3-查看并填写配置文件" class="headerlink" title="3. 查看并填写配置文件"></a>3. 查看并填写配置文件</h3><ul><li>创建 <code>cfg</code> 文件<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp account.cfg.example account.cfg</span><br></pre></td></tr></table></figure></li><li>修改之<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[account]</span><br><span class="line"># USERNAME: 学号</span><br><span class="line">USERNAME = xxxxxxxx</span><br><span class="line"># PASSWORD: 密码</span><br><span class="line">PASSWORD = xxxxxxxx</span><br><span class="line"></span><br><span class="line"># 是否启用 Headless Mode</span><br><span class="line"># True: 启用 Headless Mode --&gt; 不显示 UI</span><br><span class="line"># False: 不启用 Headless Mode  --&gt; 显示 UI</span><br><span class="line">HEADLESS = False</span><br></pre></td></tr></table></figure></li></ul><h3 id="4-运行代码"><a href="#4-运行代码" class="headerlink" title="4. 运行代码"></a>4. 运行代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py</span><br></pre></td></tr></table></figure><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"    src="img/image_2023-02-13-21-26-22.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">执行效果</div></center><h2 id="关于-playwright"><a href="#关于-playwright" class="headerlink" title="关于 playwright"></a>关于 <code>playwright</code></h2><ul><li><code>PlayWright</code> 有录制功能，能够快速生成脚本，提升开发速度。</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m playwright codegen</span><br></pre></td></tr></table></figure><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"    src="img/image_2023-02-15-12-47-47.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Playwright Codegen</div></center>]]></content>
+        <content type="html"><![CDATA[<ul><li><a href="https://github.com/ChrisVicky/TJU-2023-Evaluator">GitHub Repo</a></li><li>本程序只是为了玩一玩 <a href="https://playwright.dev/"><code>PlayWright</code></a>，并不是为了提高评教速度。</li></ul><h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><h3 id="1-校外使用-连接-TJU-的-VPN"><a href="#1-校外使用-连接-TJU-的-VPN" class="headerlink" title="1.  校外使用 连接 TJU 的 VPN"></a>1.  <em>校外使用</em> 连接 TJU 的 VPN</h3><blockquote><p>校内登录无需此步骤</p></blockquote><ol><li><p>打开 <a href="https://www.sangfor.com.cn/"><code>easyconnect</code></a></p><blockquote><p>Arch Linux 用户可以在 <code>aur</code> 上找到。</p></blockquote></li><li><p>输入天津大学 VPN 地址 <code>https://vpn.tju.edu.cn</code>并点击按钮。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/img/image_2023-02-13-21-08-36.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">输入天津大学VPN</div></center></li><li><p>输入 VPN 帐号密码。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/img/image_2023-02-13-21-08-48.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">输入帐号密码</div></center></li><li><p>登录完成。</p><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"   src="/img/image_2023-02-13-21-09-56.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">登录完成</div></center></li></ol><h3 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2. 安装环境"></a>2. 安装环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tju</span><br><span class="line">conda activate tju</span><br><span class="line">conda install pip </span><br><span class="line">pip install -r requirement.txt</span><br><span class="line">playwright install chromium</span><br></pre></td></tr></table></figure><h3 id="3-查看并填写配置文件"><a href="#3-查看并填写配置文件" class="headerlink" title="3. 查看并填写配置文件"></a>3. 查看并填写配置文件</h3><ul><li>创建 <code>cfg</code> 文件<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp account.cfg.example account.cfg</span><br></pre></td></tr></table></figure></li><li>修改之<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[account]</span><br><span class="line"># USERNAME: 学号</span><br><span class="line">USERNAME = xxxxxxxx</span><br><span class="line"># PASSWORD: 密码</span><br><span class="line">PASSWORD = xxxxxxxx</span><br><span class="line"></span><br><span class="line"># 是否启用 Headless Mode</span><br><span class="line"># True: 启用 Headless Mode --&gt; 不显示 UI</span><br><span class="line"># False: 不启用 Headless Mode  --&gt; 显示 UI</span><br><span class="line">HEADLESS = False</span><br></pre></td></tr></table></figure></li></ul><h3 id="4-运行代码"><a href="#4-运行代码" class="headerlink" title="4. 运行代码"></a>4. 运行代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py</span><br></pre></td></tr></table></figure><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"    src="/img/image_2023-02-13-21-26-22.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">执行效果</div></center><h2 id="关于-playwright"><a href="#关于-playwright" class="headerlink" title="关于 playwright"></a>关于 <code>playwright</code></h2><ul><li><code>PlayWright</code> 有录制功能，能够快速生成脚本，提升开发速度。</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m playwright codegen</span><br></pre></td></tr></table></figure><center>  <img style="border-radius: 0.3125em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"    src="/img/image_2023-02-15-12-47-47.png"><br>  <div style="color:orange; border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;padding: 2px;">Playwright Codegen</div></center>]]></content>
       
       
       <categories>
@@ -51,9 +78,9 @@
             
             <tag> AI </tag>
             
-            <tag> PaperReview </tag>
-            
             <tag> OpenPose </tag>
+            
+            <tag> PaperReview </tag>
             
             <tag> Pose Estimation </tag>
             
@@ -84,9 +111,9 @@
       
         <tags>
             
-            <tag> Tranformer </tag>
-            
             <tag> AI </tag>
+            
+            <tag> Tranformer </tag>
             
             <tag> ViT </tag>
             
@@ -171,11 +198,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> VPN </tag>
             
             <tag> Clash </tag>
-            
-            <tag> Linux </tag>
             
             <tag> Systemd </tag>
             
@@ -229,11 +256,11 @@
       
         <tags>
             
+            <tag> DIY </tag>
+            
             <tag> Hardware </tag>
             
             <tag> Performance Improve </tag>
-            
-            <tag> DIY </tag>
             
         </tags>
       
