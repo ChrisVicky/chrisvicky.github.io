@@ -923,7 +923,7 @@ CDN:
     # sharejs:
     # sharejs_css:
     # mathjax:
-    # katex:
+    katex: true
     # katex_copytex:
     # mermaid:
     # canvas_ribbon:

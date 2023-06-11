@@ -184,7 +184,7 @@ anchor:
 
 # toc (目錄)
 toc:
-  post: true
+  post: false
   page: false
   number: true
   expand: false
@@ -952,7 +952,7 @@ CDN:
     # sharejs:
     # sharejs_css:
     # mathjax:
-    # katex:
+    katex: true
     # katex_copytex:
     # mermaid:
     # canvas_ribbon:
