@@ -98,3 +98,14 @@ markdown_it_plus:
       enable: true
       options:
         strict: false
+
+# Security
+# hexo-blog-encrypt
+encrypt:
+  abstract: 加密
+  message: 这里需要密码
+  wrong_pass_message: 密码不对哦
+  wrong_hash_message: 不能被校验
+  tags:
+  - {name: encrypt, password: 020418}
+  - {name: Diary, password: 020418Diary}

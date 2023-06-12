@@ -5,6 +5,7 @@ date: {{ date }}
 categories:
 - PaperReview
 tags:
+- PaperReview
 cover: /myimg/ViTModel.png
 ---
 

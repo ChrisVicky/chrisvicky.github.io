@@ -5,4 +5,5 @@ toc: true
 categories:
     - Diary
 tags:
+    - Diary
 ---
