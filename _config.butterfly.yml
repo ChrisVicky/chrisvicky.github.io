@@ -9,7 +9,8 @@ menu:
   Categories: /categories/ || fas fa-folder-open
   List||fas fa-list:
     Music: /music/ || fas fa-music
-    Movie: /movies/ || fas fa-video
+    Movie: /movie/ || fas fa-video
+    PDF: /pdf/ || fas fa-file-pdf
   Link: /link/ || fas fa-link
   About: /2022/11/12/aboutme || fas fa-heart
 
@@ -142,12 +143,18 @@ error_404:
 
 post_meta:
   page: # Home Page
-    date_type: created # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
+    date_type: updated # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
     categories: true # true or false 主頁是否顯示分類
     tags: false # true or false 主頁是否顯示標籤
     label: true # true or false 顯示描述性文字
   post:
+    date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
+    date_format: date # date/relative 顯示日期還是相對日期
+    categories: true # true or false 文章頁是否顯示分類
+    tags: true # true or false 文章頁是否顯示標籤
+    label: true # true or false 顯示描述性文字
+  note:
     date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
     categories: true # true or false 文章頁是否顯示分類
@@ -430,7 +437,7 @@ footer:
   owner:
     enable: true
     since: 2020
-  custom_text: Hi, Welcome to My 小窩
+  custom_text: Hi, Welcome to My Blog
   copyright: true # Copyright of theme and framework
 
 # Analysis

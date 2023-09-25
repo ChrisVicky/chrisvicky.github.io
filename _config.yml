@@ -1,4 +1,4 @@
-title: Christopher Liu's 小窩
+title: Christopher Liu's Blog
 subtitle: Stay Hungery, Stay Foolish
 description: ''
 keywords: Architecture, Web3, Life, AI
@@ -109,3 +109,4 @@ encrypt:
   tags:
   - {name: encrypt, password: 020418}
   - {name: Diary, password: 020418Diary}
+  theme: xray
