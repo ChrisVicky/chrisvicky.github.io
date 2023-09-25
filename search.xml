@@ -107,9 +107,9 @@
             
             <tag> AI </tag>
             
-            <tag> OpenPose </tag>
-            
             <tag> PaperReview </tag>
+            
+            <tag> OpenPose </tag>
             
             <tag> Pose Estimation </tag>
             
@@ -140,9 +140,9 @@
       
         <tags>
             
-            <tag> AI </tag>
-            
             <tag> Tranformer </tag>
+            
+            <tag> AI </tag>
             
             <tag> ViT </tag>
             
@@ -227,11 +227,11 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> VPN </tag>
             
             <tag> Clash </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Systemd </tag>
             
@@ -285,11 +285,11 @@
       
         <tags>
             
-            <tag> DIY </tag>
-            
             <tag> Hardware </tag>
             
             <tag> Performance Improve </tag>
+            
+            <tag> DIY </tag>
             
         </tags>
       
