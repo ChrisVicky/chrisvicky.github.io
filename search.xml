@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Github Image Bed</title>
+      <link href="/2023/09/25/Github-Image-Bed/"/>
+      <url>/2023/09/25/Github-Image-Bed/</url>
+      
+        <content type="html"><![CDATA[<h2 id="background">Background</h2><ul><li>It is a catastrophe when trasfering markdown files from one desktop to another without encompassing all the images embeded. Therefore, an image bed is imperative and urgent to be setup. I’ve noticed some solutions on the internet using <a href="https://github.com/Molunerfinn/PicGo">PicGo</a>. Yet it is not delicate enough since it has to support various platforms. Thus, after discovering, I found Github Api is all you need to full-fill the requirement.</li></ul><h2 id="intuitions">Intuitions</h2><ul><li>Image bed does one and the only thing, storing images and being accessed through internet.</li><li>With Github’s Apis, it is extremely plain to automatically upload images.</li></ul><h2 id="github-repo-setup">Github Repo Setup</h2><ul><li><p>A public-reacheable repo can be easily setup.</p></li><li><p>A Token has be to generated and granted with the following Scopes.</p><ul><li><img src="https://raw.githubusercontent.com/ChrisVicky/image-bed/main/2023-09/image_2023-09-25-20-11-38.png" alt="image_2023-09-25-20-11-38"></li></ul></li><li><p>The following information must be granted to continue</p><ul><li><code>owner</code>: Your Github Name</li><li><code>repo</code>: Your Repo Name</li><li><code>token</code>: Key to Authorization</li></ul></li></ul><h2 id="program-and-automation">Program and automation</h2><ul><li>A <a href="https://github.com/ChrisVicky/image-bed-go">Program</a> written in Golang is then conducted with <a href="github.com/google/go-github/v55/github">Github Api Wrapper</a>, which basically does one thing: <em>Write an image, stored locally, to github and return its url.</em></li><li>To embed the Process with my workflow – using vim, I slightly modify the <a href="https://github.com/ChrisVicky/img-paste.vim">img-paste plugin</a> to use the script.</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Post </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> learn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>School List</title>
       <link href="/2023/09/25/School-List/"/>
       <url>/2023/09/25/School-List/</url>
